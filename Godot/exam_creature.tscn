@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://FollowPath.gd" type="Script" id=1]
 [ext_resource path="res://SpineAnimator.gd" type="Script" id=2]
 [ext_resource path="res://Avoidance.gd" type="Script" id=3]
 [ext_resource path="res://NoiseWander.gd" type="Script" id=4]
 [ext_resource path="res://PlayerSteering.gd" type="Script" id=5]
+[ext_resource path="res://Models/Dodecahedron.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Constrain.gd" type="Script" id=8]
 [ext_resource path="res://Tank Material.tres" type="Material" id=9]
 [ext_resource path="res://Harmonic.gd" type="Script" id=10]
@@ -134,6 +135,9 @@ shape = SubResource( 12 )
 
 [node name="body3" type="KinematicBody" parent="creature"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Dodecahedron" parent="creature/body3" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4.10966, 0 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="creature/body3"]
 mesh = SubResource( 1 )
