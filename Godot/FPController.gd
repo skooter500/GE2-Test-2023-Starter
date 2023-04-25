@@ -9,8 +9,13 @@ export var sensitivity = 0.1
 export var speed:float = 1.0
 
 var controlling = true
-
+var podattachment
+var playerrotation
 func _input(event):
+	
+	podattachment = $Tween
+	playerrotation = $Tween2
+	
 	if event is InputEventMouseMotion and controlling:
 		rotate(Vector3.DOWN, deg2rad(event.relative.x * sensitivity))
 		rotate(transform.basis.x,deg2rad(- event.relative.y * sensitivity))
@@ -49,8 +54,15 @@ func _process(delta):
 			global_translate(- global_transform.basis.y * speed * upanddown * mult * delta)
 			
 	else:
+		$"../creature/boid/UserSteering".enabled = true
+		$"../creature/boid/PathFollow".enabled = false
 		global_translation = $"../creature/body3/Dodecahedron".global_translation
+		podattachment.interpolate_property(self, "global_translation", global_translation, $"../creature/body3/Dodecahedron".global_translation, 2, Tween.TRANS_CIRC, Tween.EASE_IN)
+		podattachment.start()
+		
+		
 		if(Input.is_action_just_released("release")):
+			$"../creature/boid/UserSteering".enabled = false
 			move = true
 
 func _on_Dodecahedron_body_entered(body):

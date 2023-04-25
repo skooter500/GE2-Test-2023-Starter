@@ -171,6 +171,10 @@ far = 10000.0
 
 [node name="Listener" type="Listener" parent="Player/Camera"]
 
+[node name="Tween" type="Tween" parent="Player"]
+
+[node name="Tween2" type="Tween" parent="Player"]
+
 [node name="Path" type="Path" parent="."]
 transform = Transform( 0.029265, 0, -0.999572, 0, 1, 0, 0.999572, 0, 0.029265, 6.28377, -4.57764e-05, -18.2004 )
 curve = SubResource( 16 )
