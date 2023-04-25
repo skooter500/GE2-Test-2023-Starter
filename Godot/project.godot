@@ -1,0 +1,302 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "SteeringBehavior",
+"class": "Alignment",
+"language": "GDScript",
+"path": "res://Alignment.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Arrive",
+"language": "GDScript",
+"path": "res://Arrive.gd"
+}, {
+"base": "State",
+"class": "AttackState",
+"language": "GDScript",
+"path": "res://AttackState.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Avoidance",
+"language": "GDScript",
+"path": "res://Avoidance.gd"
+}, {
+"base": "KinematicBody",
+"class": "Boid",
+"language": "GDScript",
+"path": "res://Boid.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Cohesion",
+"language": "GDScript",
+"path": "res://Cohesion.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Constrain",
+"language": "GDScript",
+"path": "res://Constrain.gd"
+}, {
+"base": "State",
+"class": "DefendState",
+"language": "GDScript",
+"path": "res://DefendState.gd"
+}, {
+"base": "State",
+"class": "DockedState",
+"language": "GDScript",
+"path": "res://DockedState.gd"
+}, {
+"base": "State",
+"class": "FireAtTargetGlobalState",
+"language": "GDScript",
+"path": "res://fire_at_target_global_state.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Flee",
+"language": "GDScript",
+"path": "res://Flee.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "FollowPath",
+"language": "GDScript",
+"path": "res://FollowPath.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Harmonic",
+"language": "GDScript",
+"path": "res://Harmonic.gd"
+}, {
+"base": "State",
+"class": "LaunchState",
+"language": "GDScript",
+"path": "res://LaunchState.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "NoiseWander",
+"language": "GDScript",
+"path": "res://NoiseWander.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "OffsetPursue",
+"language": "GDScript",
+"path": "res://OffsetPursue.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "PlayerSteering",
+"language": "GDScript",
+"path": "res://PlayerSteering.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Pursue",
+"language": "GDScript",
+"path": "res://Pursue.gd"
+}, {
+"base": "State",
+"class": "ReadyToLaunch",
+"language": "GDScript",
+"path": "res://ready_to_launch.gd"
+}, {
+"base": "State",
+"class": "RetreatState",
+"language": "GDScript",
+"path": "res://RetreatState.gd"
+}, {
+"base": "State",
+"class": "ReturnToBase",
+"language": "GDScript",
+"path": "res://return_to_base_state.gd"
+}, {
+"base": "Node",
+"class": "School",
+"language": "GDScript",
+"path": "res://School.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Seek",
+"language": "GDScript",
+"path": "res://Seek.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Separation",
+"language": "GDScript",
+"path": "res://Separation.gd"
+}, {
+"base": "Node",
+"class": "SpineAnimator",
+"language": "GDScript",
+"path": "res://SpineAnimator.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://StateMachine.gd"
+}, {
+"base": "Node",
+"class": "SteeringBehavior",
+"language": "GDScript",
+"path": "res://SteeringBehavior.gd"
+}, {
+"base": "Spatial",
+"class": "TrailRenderer",
+"language": "GDScript",
+"path": "res://TrailRender.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "UserHarmonic",
+"language": "GDScript",
+"path": "res://UserHarmonic.gd"
+}, {
+"base": "Node",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://Utils.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "Wander",
+"language": "GDScript",
+"path": "res://Wander.gd"
+} ]
+_global_script_class_icons={
+"Alignment": "",
+"Arrive": "",
+"AttackState": "",
+"Avoidance": "",
+"Boid": "",
+"Cohesion": "",
+"Constrain": "",
+"DefendState": "",
+"DockedState": "",
+"FireAtTargetGlobalState": "",
+"Flee": "",
+"FollowPath": "",
+"Harmonic": "",
+"LaunchState": "",
+"NoiseWander": "",
+"OffsetPursue": "",
+"PlayerSteering": "",
+"Pursue": "",
+"ReadyToLaunch": "",
+"RetreatState": "",
+"ReturnToBase": "",
+"School": "",
+"Seek": "",
+"Separation": "",
+"SpineAnimator": "",
+"State": "",
+"StateMachine": "",
+"SteeringBehavior": "",
+"TrailRenderer": "",
+"UserHarmonic": "",
+"Utils": "",
+"Wander": ""
+}
+
+[application]
+
+config/name="Games Engines Exam 2023"
+run/main_scene="res://StateMachineBots.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+DebugDraw="*res://addons/debug_draw_3d/debug_draw.gd"
+
+[display]
+
+window/size/height=768
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/debug_draw_3d/plugin.cfg", "res://addons/godot-openxr/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://addons/godot-openxr/config/godot_openxr.gdnlib" ]
+
+[global]
+
+colliders=true
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+move_forward={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_back={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+turn_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+turn_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mouse_x={
+"deadzone": 0.5,
+"events": [  ]
+}
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":69,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":-1.0,"script":null)
+ ]
+}
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":70,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":1.0,"script":null)
+ ]
+}
+
+[layer_names]
+
+3d_physics/layer_1="Attacker"
+3d_physics/layer_2="Base"
+3d_physics/layer_3="Bullets"
+3d_physics/layer_4="Pig"
+
+[mono]
+
+project/assembly_name="Experiments1"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/subsurface_scattering/quality=2
+quality/filters/msaa=2

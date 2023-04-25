@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://collision_test.gd" type="Script" id=1]
+[ext_resource path="res://move_forward.gd" type="Script" id=2]
+[ext_resource path="res://root.gd" type="Script" id=3]
+
+[sub_resource type="SphereShape" id=2]
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="SphereShape" id=4]
+
+[node name="root" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="CheckCollisions" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="I AM KINEMATIC" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.54781 )
+script = ExtResource( 2 )
+speed = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="I AM KINEMATIC"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="I AM KINEMATIC"]
+mesh = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.63522, 1.18694 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+
+[node name="I AM AREA" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="I AM AREA"]
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="I AM AREA" to="CheckCollisions" method="_on_I_AM_AREA_body_entered"]
+[connection signal="body_exited" from="I AM AREA" to="CheckCollisions" method="_on_I_AM_AREA_body_exited"]
