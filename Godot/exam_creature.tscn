@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://FollowPath.gd" type="Script" id=1]
 [ext_resource path="res://SpineAnimator.gd" type="Script" id=2]
 [ext_resource path="res://Avoidance.gd" type="Script" id=3]
 [ext_resource path="res://NoiseWander.gd" type="Script" id=4]
 [ext_resource path="res://PlayerSteering.gd" type="Script" id=5]
+[ext_resource path="res://Models/Dodecahedron.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Constrain.gd" type="Script" id=8]
 [ext_resource path="res://Tank Material.tres" type="Material" id=9]
 [ext_resource path="res://Harmonic.gd" type="Script" id=10]
@@ -72,13 +73,11 @@ shape = SubResource( 9 )
 [node name="Avoidance" type="Node" parent="creature/boid"]
 script = ExtResource( 3 )
 weight = 10.0
-enabled = false
 feeler_length = 15
 
 [node name="Harmonic" type="Node" parent="creature/boid"]
 script = ExtResource( 10 )
 weight = 3.0
-enabled = false
 frequency = 0.5
 distance = 10
 axis = 1
@@ -100,7 +99,6 @@ distance = 100
 [node name="PathFollow" type="Node" parent="creature/boid"]
 script = ExtResource( 1 )
 weight = 3.0
-enabled = false
 path_path = NodePath("../../../Path")
 waypoint_seek_distance = 5
 
@@ -135,6 +133,9 @@ shape = SubResource( 12 )
 [node name="body3" type="KinematicBody" parent="creature"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
 
+[node name="Dodecahedron" parent="creature/body3" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4.8188, 0 )
+
 [node name="MeshInstance2" type="MeshInstance" parent="creature/body3"]
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
@@ -156,7 +157,7 @@ shape = SubResource( 10 )
 disabled = true
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5051, 11.8629, 4.27246 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.15055, 8.14642, -8.50031 )
 script = ExtResource( 13 )
 speed = 10.0
 move = true
@@ -169,6 +170,10 @@ environment = SubResource( 14 )
 far = 10000.0
 
 [node name="Listener" type="Listener" parent="Player/Camera"]
+
+[node name="Tween" type="Tween" parent="Player"]
+
+[node name="Tween2" type="Tween" parent="Player"]
 
 [node name="Path" type="Path" parent="."]
 transform = Transform( 0.029265, 0, -0.999572, 0, 1, 0, 0.999572, 0, 0.029265, 6.28377, -4.57764e-05, -18.2004 )
@@ -192,3 +197,6 @@ obstacle_scene = ExtResource( 18 )
 radius = 30
 
 [node name="SceneSwitcher" parent="." instance=ExtResource( 17 )]
+
+[connection signal="body_entered" from="creature/body3/Dodecahedron" to="Player" method="_on_Dodecahedron_body_entered"]
+[connection signal="body_exited" from="creature/body3/Dodecahedron" to="Player" method="_on_Dodecahedron_body_exited"]

@@ -12,7 +12,7 @@ var can_fire = true
 func _ready():
 	boid = get_parent()
 	target = get_node(target_path)
-	bullet_scene = load("Bullet1.tscn")
+	bullet_scene = load("bullet1.tscn")
 	timer = Timer.new()
 	add_child(timer)	
 	timer.wait_time = 1
