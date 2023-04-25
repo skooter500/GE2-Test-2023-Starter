@@ -47,3 +47,7 @@ func _process(delta):
 		var upanddown = Input.get_axis("move_up", "move_down")
 		if abs(upanddown) > 0:     
 			global_translate(- global_transform.basis.y * speed * upanddown * mult * delta)
+
+func _on_Pod_Entered(body: Node):
+	if body == self:
+		print("Test")
