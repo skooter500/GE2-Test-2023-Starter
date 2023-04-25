@@ -157,7 +157,7 @@ shape = SubResource( 10 )
 disabled = true
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5051, 11.8629, 4.27246 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.15055, 8.14642, -8.50031 )
 script = ExtResource( 13 )
 speed = 10.0
 move = true
@@ -194,4 +194,5 @@ radius = 30
 
 [node name="SceneSwitcher" parent="." instance=ExtResource( 17 )]
 
-[connection signal="body_entered" from="creature/body3/Dodecahedron" to="Player" method="_on_Pod_Entered"]
+[connection signal="body_entered" from="creature/body3/Dodecahedron" to="Player" method="_on_Dodecahedron_body_entered"]
+[connection signal="body_exited" from="creature/body3/Dodecahedron" to="Player" method="_on_Dodecahedron_body_exited"]

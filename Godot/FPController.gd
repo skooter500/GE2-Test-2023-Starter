@@ -47,7 +47,15 @@ func _process(delta):
 		var upanddown = Input.get_axis("move_up", "move_down")
 		if abs(upanddown) > 0:     
 			global_translate(- global_transform.basis.y * speed * upanddown * mult * delta)
+			
+	else:
+		global_translation = $"../creature/body3/Dodecahedron".global_translation
+		if(Input.is_action_just_released("release")):
+			move = true
 
-func _on_Pod_Entered(body: Node):
+func _on_Dodecahedron_body_entered(body):
 	if body == self:
-		print("Test")
+		move = false
+	
+func _on_Dodecahedron_body_exited(body):
+	pass # Replace with function body.
