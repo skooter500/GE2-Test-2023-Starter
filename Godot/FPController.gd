@@ -11,6 +11,7 @@ export var speed:float = 1.0
 var controlling = true
 var podattachment
 var playerrotation
+var time = 200
 func _input(event):
 	
 	podattachment = $Tween
@@ -56,14 +57,18 @@ func _process(delta):
 	else:
 		$"../creature/boid/UserSteering".enabled = true
 		$"../creature/boid/PathFollow".enabled = false
-		global_translation = $"../creature/body3/Dodecahedron".global_translation
-		podattachment.interpolate_property(self, "global_translation", global_translation, $"../creature/body3/Dodecahedron".global_translation, 2, Tween.TRANS_CIRC, Tween.EASE_IN)
+		podattachment.interpolate_property(self, "global_translation", global_translation, $"../creature/body3/Dodecahedron".global_translation, 0.025, Tween.TRANS_CIRC, Tween.EASE_IN)
 		podattachment.start()
+			
+		
+		playerrotation.interpolate_property(self, "global_rotation", global_rotation, $"../creature/boid".global_rotation, 0.1, Tween.TRANS_CIRC, Tween.EASE_IN)
+		playerrotation.start()
 		
 		
 		if(Input.is_action_just_released("release")):
 			$"../creature/boid/UserSteering".enabled = false
 			move = true
+			time = 200
 
 func _on_Dodecahedron_body_entered(body):
 	if body == self:
